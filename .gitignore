@@ -2,7 +2,7 @@
 /controller/vendor/**
 # cache
 /view/cache/**
-# параметры
+# params
 .env
 .htaccess
 # backup

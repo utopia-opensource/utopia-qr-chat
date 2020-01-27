@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% include 'parts/head.tmpl' %}
+	<body class="channel-bg">
+		<div class="uk-light">
+			{% include 'parts/navbar.tmpl' %}
+			<div class="uk-container uk-padding">
+				{#<h4>{{ page.channel.title }}</h4>#}
+				<ul class="uk-breadcrumb">
+					<li><span>Channel</span></li>
+					<li><span>{{ page.channel.title }}</span></li>
+				</ul>
+				<div class="uk-card uk-card-default uk-card-body">
+					<table class="uk-table">
+						{#<caption>Table Caption</caption>#}
+						<tbody>
+							<tr>
+								<td>Channel description</td>
+								<td>{{ page.channel.description }}</td>
+							</tr>
+							<tr>
+								<td>Channel ID</td>
+								<td>
+									<span>{{ page.channel.utopia_channelid }}</span>
+									<button class="uk-button uk-button-secondary btn-copy" data-clipboard-text="{{ page.channel.utopia_channelid }}">
+										<span uk-icon="copy"></span>
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div uk-lightbox>
+						<span uk-icon="question"></span>
+						<a class="uk-button uk-button-primary" href="/img/howto1.jpg" data-caption="Step 1: Download Utopia Client">How to access the chat?</a>
+						<a class="uk-button uk-button-primary" href="/img/howto2.jpg" data-caption="Step 2: Go to the channel manager">Step 2</a>
+						<a class="uk-button uk-button-primary" href="/img/howto3.jpg" data-caption="Step 3: insert the channel ID and double-click on the desired channel in the list of found">Step 3</a>
+					</div>
+				</div>
+				<h4>Recent Channel Posts</h4>
+				{% if page.channel.messages.count == 0 %}
+					<p>no messages</p>
+				{% else %}
+					{% include 'parts/comments.tmpl' %}
+				{% endif %}
+			</div>
+		</div>
+		{% include 'parts/scripts.tmpl' %}
+	</body>
+</html>
