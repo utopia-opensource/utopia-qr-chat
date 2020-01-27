@@ -20,7 +20,6 @@
 		
 		function cURL($url, $ref, $header, $cookie, $p=null){
 			$curlDefault = true;
-			//чтобы тестировать на сервере, на котором нет guzzle
 			if($curlDefault) {
 				$ch =  curl_init();
 				curl_setopt($ch, CURLOPT_URL, $url);
@@ -61,15 +60,13 @@
 					}
 					return $request->getbody();
 				} catch(Exception $e) {
-					//TODO: обработку ошибки
-					//можно обернуть в json
 					echo 'guzzle error: ' . $e->getMessage();
 				}
 			}
 		}
 		
 		function curl_get($url) {
-			return \App\Utilities::cURL($url, '', '', '');
+			return Utilities::cURL($url, '', '', '');
 		}
 		
 		function generateCode($length = 6): string {
@@ -84,22 +81,20 @@
 		}
 		
 		//кажется, return: mixed
-		function checkFields($arr = [], $keysArr = [], $errCode = "error", $db_link = null, $ignore_errors = false) {
+		function checkFields($arr = [], $keysArr = [], $db_link = null) {
 			$data = [];
 			foreach ($keysArr as $key) {
 				if(!isset($arr[$key]) || (empty($arr[$key]) && $arr[$key] != "0" && $arr[$key] != 0)) {
-					if(!$ignore_errors) {
-						exit($errCode.' ('.$key.' is empty)');
-					}
+					$data[$key] = '';
 				} else {
-					$data[$key] = \App\Model\Utilities::data_filter($arr[$key], $db_link);
+					$data[$key] = Utilities::data_filter($arr[$key], $db_link);
 				}
 			}
 			return $data;
 		}
 		
 		function checkINT($value = 0, $db_link = null): int {
-			$value = \App\Model\Utilities::data_filter($value, $db_link) + 0;
+			$value = Utilities::data_filter($value, $db_link) + 0;
 			if(!is_int($value)) {
 				$value = 0;
 			}
@@ -107,7 +102,7 @@
 		}
 		
 		function checkFloat($value = 0, $db_link = null): float {
-			$value = floatval(\App\Model\Utilities::data_filter($value, $db_link));
+			$value = floatval(Utilities::data_filter($value, $db_link));
 			if(!is_float($value)) {
 				$value = 0;
 			}
@@ -121,7 +116,7 @@
 				if(!isset($arr[$key]) || empty($arr[$key])) {
 					$data[$key] = 0;
 				} else {
-					$data[$key] = \App\Model\Utilities::checkINT($arr[$key], $db_link);
+					$data[$key] = Utilities::checkINT($arr[$key], $db_link);
 				}
 			}
 			return $data;

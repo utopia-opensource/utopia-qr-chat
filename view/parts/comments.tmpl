@@ -1,0 +1,17 @@
+<div class="uk-dark">
+	{% for comment in page.channel.messages.array %}
+		<article class="uk-comment" id="comment{{ comment.id }}">
+			<header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
+				<div class="uk-width-auto">
+					<img class="uk-comment-avatar uk-border-rounded" src="https://api.adorable.io/avatars/80/{{ comment.user_nickname }}.png" width="80" height="80" alt="user avatar"/>
+				</div>
+				<div class="uk-width-expand">
+					<h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{ comment.user_nickname }}</a></h4>
+				</div>
+			</header>
+			<div class="uk-comment-body">
+				<p>{{ comment.message_text }}</p>
+			</div>
+		</article><br/>
+	{% endfor %}
+</div>

@@ -1,3 +1,19 @@
+body {
+	background-color: black;
+}
+
+footer {
+	position: fixed;
+    bottom: 0;
+    text-align: right;
+    background-color: rgba(0, 0, 0, 0.71);
+    color: #437e90;
+    padding: 0.5rem;
+    padding-right: 1rem;
+    left: 0;
+    right: 0;
+}
+
 .github-btn {
 	position: relative;
 	top: 5px;
@@ -6,4 +22,33 @@
 
 .link-simple, .link-simple:hover {
 	text-decoration: none;
+}
+
+.main-bg {
+	position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.channel-bg {
+	background-color: #2b2d37;
+}
+
+.main-bg {
+	background-image: url(http://sagleft.ru/img/external/tech1.jpg);
+}
+
+.section-limited {
+	max-width: 500px;
+}
+
+.uk-navbar {
+	background: #3b3e4a!important;
+}
+
+.primary-green {
+	background-color: #2b6a3e;
 }
