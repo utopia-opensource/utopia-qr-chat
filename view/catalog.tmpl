@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% include 'parts/head.tmpl' %}
+	<body class="channel-bg">
+		<div class="uk-light">
+			{% include 'parts/navbar.tmpl' %}
+			<h1 class="text-center">Catalog of channels</h1>
+			<div class="uk-container uk-padding">
+					<table class="uk-table">
+						<tbody>
+							{% for channel in page.channels.array %}
+								<tr>
+									<td>#{{ loop.index }}</td>
+									<td>
+										<b><a href="/id/{{ channel.utopia_channelid }}">{{ channel.title }}</a></b>
+									</td>
+									<td>{{ channel.description }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+			</div>
+		</div>
+		{% include 'parts/scripts.tmpl' %}
+	</body>
+</html>

@@ -117,4 +117,9 @@
 				}
 			}
 		}
+		
+		public function getChannels(): array {
+			$sql_query = "SELECT id,title,utopia_channelid,description FROM channels LIMIT 100";
+			return $this->db->query2multiArr($sql_query);
+		}
 	}
