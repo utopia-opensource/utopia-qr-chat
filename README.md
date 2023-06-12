@@ -32,3 +32,6 @@ for example:
 ## Updating Cron Chat Messages
 
 Put the script to run: ```controller/cron/update_channels.php```
+
+---
+[![udocs](https://github.com/Sagleft/ures/blob/master/udocs-btn.png?raw=true)](https://udocs.gitbook.io/utopia-api/)
